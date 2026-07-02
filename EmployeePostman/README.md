@@ -56,7 +56,7 @@ Examples
 ```
 Nova
 Nova Gupta
-Nova Kumar Gupta
+Nova n g
 ```
 
 ---
