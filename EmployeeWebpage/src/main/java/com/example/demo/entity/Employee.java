@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
 
 @Entity
 public class Employee {
@@ -25,7 +24,7 @@ public class Employee {
     @Max(value = 60, message = "Age cannot exceed 60")
     private int age;
 
-    @Positive(message = "Salary must be greater than 0")
+    // Salary is assigned automatically based on designation
     private double salary;
 
     @NotBlank(message = "Designation cannot be empty")
@@ -82,4 +81,3 @@ public class Employee {
         this.designation = designation;
     }
 }
-

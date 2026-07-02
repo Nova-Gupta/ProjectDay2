@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -25,8 +26,8 @@ public class Employee {
     @Max(value = 60, message = "Age cannot exceed 60")
     private int age;
 
-    @Positive(message = "Salary must be greater than 0")
-    private double salary;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Double salary;
 
     @NotBlank(message = "Designation cannot be empty")
     private String designation;
@@ -34,7 +35,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Integer id, String name, int age, double salary, String designation) {
+    public Employee(Integer id, String name, int age, Double salary, String designation) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -66,11 +67,11 @@ public class Employee {
         this.age = age;
     }
 
-    public double getSalary() {
+    public Double getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 

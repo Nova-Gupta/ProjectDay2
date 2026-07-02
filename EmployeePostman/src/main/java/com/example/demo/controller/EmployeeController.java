@@ -44,5 +44,12 @@ public class EmployeeController {
         return service.raiseSalary(name, percentage);
 
     }
+    
+    //exit
+    @GetMapping("/exit")
+    public void exit() {
+        System.out.println("Application terminated by user.");
+        System.exit(0);
+    }
 
 }

@@ -12,42 +12,58 @@ import com.example.demo.repository.EmployeeRepository;
 @Service
 public class EmployeeService {
 
-    @Autowired
-    EmployeeRepository repository;
+	@Autowired
+	EmployeeRepository repository;
 
-    // Create Employee
-    public Employee saveEmployee(Employee employee) {
+	// Create Employee
+	public Employee saveEmployee(Employee employee) {
 
-        return repository.save(employee);
+		switch (employee.getDesignation().toLowerCase()) {
 
-    }
+		case "programmer":
+			employee.setSalary(25000);
+			break;
 
-    // Display Employees
-    public List<Employee> getAllEmployees() {
+		case "manager":
+			employee.setSalary(30000);
+			break;
 
-        return repository.findAll();
+		case "tester":
+			employee.setSalary(20000);
+			break;
 
-    }
+		default:
+			throw new IllegalArgumentException("Designation should be Programmer, Manager or Tester");
+		}
 
-    // Raise Salary
-    public Employee raiseSalary(String name, int percentage) {
+		return repository.save(employee);
+	}
 
-        if (percentage < 1 || percentage > 10) {
+	// Display Employees
+	public List<Employee> getAllEmployees() {
 
-            throw new IllegalArgumentException("Percentage should be between 1 and 10");
+		return repository.findAll();
 
-        }
+	}
 
-        Employee employee = repository.findByName(name)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+	// Raise Salary
+	public Employee raiseSalary(String name, int percentage) {
 
-        double updatedSalary = employee.getSalary()
-                + (employee.getSalary() * percentage / 100);
+		if (percentage < 1 || percentage > 10) {
 
-        employee.setSalary(updatedSalary);
+			throw new IllegalArgumentException("Percentage should be between 1 and 10");
 
-        return repository.save(employee);
+		}
 
-    }
+		Employee employee = repository.findByName(name)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
+
+		double updatedSalary = employee.getSalary() + (employee.getSalary() * percentage / 100);
+
+		employee.setSalary(updatedSalary);
+
+		return repository.save(employee);
+
+	}
 
 }

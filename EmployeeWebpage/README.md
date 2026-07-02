@@ -1,6 +1,8 @@
 # EmployeeWebApp
 
-A Spring Boot web application developed using **Spring MVC**, **Thymeleaf**, **Spring Data JPA**, and **H2 Database**. This project provides a simple Employee Management System with a web interface.
+A Spring Boot web application developed using **Spring MVC**, **Thymeleaf**, **Spring Data JPA**, **Hibernate**, and **H2 Database**.
+
+The application provides a complete Employee Management System with automatic salary assignment, salary increment, validation, and a responsive Bootstrap interface.
 
 ---
 
@@ -22,11 +24,25 @@ A Spring Boot web application developed using **Spring MVC**, **Thymeleaf**, **S
 
 - Home Page
 - Add Employee
-- Display Employee List
+- Display Employees
 - Raise Employee Salary
-- Form Validation
+- Automatic Salary Assignment
+- Exit Application
 - Bootstrap User Interface
+- Form Validation
 - H2 Database Integration
+
+---
+
+## Salary Structure
+
+| Designation | Salary |
+|-------------|--------|
+| Programmer | ₹25,000 |
+| Manager | ₹30,000 |
+| Tester | ₹20,000 |
+
+The salary is automatically assigned according to the selected designation.
 
 ---
 
@@ -37,6 +53,7 @@ A Spring Boot web application developed using **Spring MVC**, **Thymeleaf**, **S
 - Add Employee
 - Display Employees
 - Raise Salary
+- Exit
 
 ---
 
@@ -46,14 +63,21 @@ Fields
 
 - Name
 - Age
-- Salary
 - Designation
+
+> Salary is assigned automatically and is not entered by the user.
 
 ---
 
 ### Display Employees
 
-Displays all employee details in a Bootstrap table.
+Displays
+
+- ID
+- Name
+- Age
+- Designation
+- Salary
 
 ---
 
@@ -62,9 +86,9 @@ Displays all employee details in a Bootstrap table.
 Input
 
 - Employee Name
-- Percentage (1-10)
+- Percentage (1–10)
 
-Updates employee salary automatically.
+Updates the selected employee's salary.
 
 ---
 
@@ -79,13 +103,9 @@ Updates employee salary automatically.
 
 18–60
 
-### Salary
+### Salary Increment
 
-Greater than 0
-
-### Percentage
-
-1–10
+1–10%
 
 ---
 
@@ -146,10 +166,12 @@ EmployeeWebApp
 
 - Spring MVC
 - Thymeleaf
-- Bootstrap
 - CRUD Operations
+- Spring Data JPA
+- Hibernate
 - H2 Database
-- Form Validation
+- Bootstrap
+- Bean Validation
 - MVC Architecture
 
 ---

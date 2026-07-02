@@ -1,6 +1,8 @@
 # EmployeePostman
 
-A Spring Boot REST API project for managing employees using **H2 Database**, **Spring Data JPA**, and **Hibernate**. This application allows users to create employees, display all employees, and update employee salaries through REST APIs tested with Postman.
+A Spring Boot REST API application for managing employees using **H2 Database**, **Spring Data JPA**, and **Hibernate**.
+
+This project demonstrates CRUD operations, validation, exception handling, automatic salary assignment based on employee designation, salary increment, and application termination using REST APIs tested with Postman.
 
 ---
 
@@ -22,9 +24,23 @@ A Spring Boot REST API project for managing employees using **H2 Database**, **S
 - Create Employee
 - Display All Employees
 - Raise Employee Salary
+- Automatic Salary Assignment
+- Exit Application
 - Input Validation
 - Global Exception Handling
 - H2 Database Integration
+
+---
+
+## Salary Structure
+
+| Designation | Salary |
+|-------------|--------|
+| Programmer | ₹25,000 |
+| Manager | ₹30,000 |
+| Tester | ₹20,000 |
+
+The salary is assigned automatically based on the selected designation.
 
 ---
 
@@ -32,34 +48,28 @@ A Spring Boot REST API project for managing employees using **H2 Database**, **S
 
 ### Name
 
-- Only alphabets are allowed.
-- Maximum 2 spaces (maximum 3 words).
+- Only alphabets allowed
+- Maximum 2 spaces (maximum 3 words)
 
-Example:
+Examples
 
 ```
 Nova
 Nova Gupta
+Nova Kumar Gupta
 ```
 
 ---
 
 ### Age
 
-- Minimum: 18
-- Maximum: 60
+18 – 60
 
 ---
 
-### Salary
+### Salary Increment
 
-- Must be greater than 0.
-
----
-
-### Salary Percentage
-
-- Must be between 1 and 10.
+1% – 10%
 
 ---
 
@@ -75,10 +85,10 @@ Request Body
 
 ```json
 {
-  "name":"Nova Gupta",
-  "age":21,
-  "salary":30000,
-  "designation":"Developer"
+    "name":"Nova Gupta",
+    "age":21,
+    "salary":0,
+    "designation":"Programmer"
 }
 ```
 
@@ -97,6 +107,16 @@ GET /employee
 ```
 PUT /employee/raise?name=Nova Gupta&percentage=5
 ```
+
+---
+
+### Exit Application
+
+```
+GET /employee/exit
+```
+
+This endpoint terminates the Spring Boot application using `System.exit(0)`.
 
 ---
 
@@ -149,10 +169,15 @@ EmployeePostman
 
 - Spring Boot REST APIs
 - CRUD Operations
-- H2 Database
+- Spring Data JPA
 - Hibernate ORM
+- H2 Database
 - Bean Validation
 - Exception Handling
 - Postman API Testing
 
 ---
+
+## Author
+
+**Nova Gupta**
